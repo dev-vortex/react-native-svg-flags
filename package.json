@@ -1,0 +1,134 @@
+{
+  "name": "@dev-vortex/react-native-svg-flags",
+  "version": "0.0.0-development",
+  "description": "React Native SVG country flags",
+  "keywords": [
+    "react",
+    "native",
+    "svg",
+    "flags",
+    "country",
+    "typescript"
+  ],
+  "author": "Joao Correia <joao@correia.pw> (https://joao.correia.pw)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-vortex/react-native-svg-flags.git"
+  },
+  "main": "lib/commonjs/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "node": "^12.20.0 || ^14.13.1 || >=16.0.0",
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsc -p tsconfig.json",
+    "build": "yarn build:clean && yarn build:bundle && yarn build:types && yarn build:paths",
+    "build:simple": "yarn build:clean && tsc && yarn build:types && yarn build:paths",
+    "build:clean": "rimraf dist/*",
+    "build:bundle": "rollup -c",
+    "build:types": "copyfiles -u 1 \"src/types/*.d.ts\" dist",
+    "build:paths": "tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "test": "mocha",
+    "test:watch": "mocha -w",
+    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" yarn test",
+    "prepare": "bob build",
+    "commit": "cz",
+    "lint": "eslint . --ext .ts",
+    "release": "semantic-release",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@react-native-community/bob": "^0.17.1",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@svgr/rollup": "^6.2.1",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^16.4.0",
+    "@types/react": "^18.0.12",
+    "@types/react-native": "^0.67.8",
+    "@types/sinon": "^10.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "acorn-jsx": "^5.3.2",
+    "chai": "^4.3.4",
+    "commitizen": "^4.2.4",
+    "copyfiles": "^2.4.1",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.27.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "firebase-functions-test": "^2.0.1",
+    "get-caller-file": "^2.0.5",
+    "glob": "^8.0.3",
+    "mocha": "^9.2.1",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.0",
+    "react": "^18.1.0",
+    "react-native": "^0.68.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.72.1",
+    "rollup-plugin-jsx": "^1.0.3",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-uglify": "^6.0.4",
+    "semantic-release": "^17.4.3",
+    "sinon": "^13.0.1",
+    "terser": "^5.13.1",
+    "ts-node": "^10.1.0",
+    "tsconfig-paths": "^3.10.1",
+    "tscpaths": "^0.0.9",
+    "typescript": "^4.2.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "mocha": {
+    "diff": true,
+    "reporter": "spec",
+    "spec": "tests/**/*.test.ts",
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ],
+    "watch-files": [
+      "src/**/*",
+      "tests/**/*"
+    ]
+  },
+  "nyc": {
+    "include": "src",
+    "exclude": "**/*.test.js"
+  },
+  "unpkg": "dist/index.js",
+  "jsdelivr": "dist/index.js",
+  "react-native": "src/index.tsx",
+  "module": "lib/module/index.js",
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
+}

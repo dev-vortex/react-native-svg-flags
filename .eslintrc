@@ -1,0 +1,43 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        // "plugin:@typescript-eslint/eslint-recommended",
+        // "plugin:@typescript-eslint/recommended"
+        "standard",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "plugin:prettier/recommended",
+        "plugin:react-hooks/recommended"
+    ],
+    "plugins": [
+        // "prettier",
+        // "@typescript-eslint"
+        "react",
+        "react-native",
+        "react-hooks",
+        "@typescript-eslint",
+        "prettier",
+        "standard",
+        "eslint-plugin-import"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "rules": {
+        "import/no-default-export": "error",
+        "react/display-name": "off",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": [
+            "warn",
+            {
+                "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+            }
+        ]
+    }
+}
